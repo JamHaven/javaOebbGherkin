@@ -12,16 +12,27 @@ import static java.util.Collections.singletonList;
 
 public class GherkinParser {
 
-     List parseFeatureFile(String file){
+    /**
+     * Parses a .feature file in Gherkin format and returns the results
+     * @param file Feature file to parse
+     * @param pickleStreamWanted If the less detailed pickleStream is wanted, or a more detailed Envelope
+     * @return List of the results from the parsed Gherkin file, but not really JSON...?
+     */
+     List parseFeatureFile(String file, Boolean pickleStreamWanted){
         IdGenerator idGenerator = new IdGenerator.Incrementing();
         List<String> paths = singletonList(file);
         boolean includeSource = false;
         boolean includeAst = true;
         boolean includePickles = true;
         Stream<Envelope> envelopeStream = Gherkin.fromPaths(paths, includeSource, includeAst, includePickles, idGenerator);;
-        Stream<Envelope> pickleStream = envelopeStream.filter(Messages.Envelope::hasPickle);
 
-       // return envelopeStream.collect(Collectors.toList());
-         return pickleStream.collect(Collectors.toList());
+        if(pickleStreamWanted){
+            Stream<Envelope> pickleStream = envelopeStream.filter(Messages.Envelope::hasPickle);
+            return pickleStream.collect(Collectors.toList());
+        }
+        else{
+            return envelopeStream.collect(Collectors.toList());
+        }
+
     }
 }
