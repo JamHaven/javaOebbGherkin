@@ -2,23 +2,20 @@ package StepDefinition;
 
 import java.util.List;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class TestTicketbuchungSteps {
-	@Given("^StarteWebApp$")				
-    public void starteWebApp() throws Throwable							
-    {		
-        //Todo				
-    }		
-	@And
-	("^NavigiereZuTicketBuchung$")				
-    public void navigiereZuTicketBuchung() throws Throwable							
-    {		
-        //Todo				
-    }	
+	
+	@Given("^StarteWebApp AND NavigiereZuTicketBuchung$")
+	public void startewebapp_AND_NavigiereZuTicketBuchung() throws Throwable {
+		System.out.println("StarteWebApp AND NavigiereZuTicketBuchung");
+	}
+	@Given("^StarteWebApp$")
+	public void startewebapp() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	}
     @When("^Wähle$")					
     public void wähle(List<String> parList) throws Throwable 							
     {		
