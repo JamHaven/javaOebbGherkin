@@ -1,10 +1,12 @@
 package StepDefinition;
 
 import java.util.List;
+import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,24 +18,38 @@ public class TestSucheSteps extends BaseSteps {
     public void startBrowser() throws Throwable							
     {		
 		System.out.println("test");
-
-        //System.setProperty("webdriver.gecko.driver", "jar//geckodriver.exe");
-		//driver=  new FirefoxDriver();
-	    //driver.manage().window().maximize();
-
 	    this.driver = this.startFirefoxDriver();
-	    this.driver.get("https://www.oebb.at/");
+	    this.driver.get("https://tickets.oebb.at/de/ticket/relation?cref=oebb-header");
     }		
 
     @When("^SucheZugverbindung$")					
-    public void sucheZugverbindung(List<String> parList) throws Throwable 							
-    {		
-    	//Todo						
+    public void sucheZugverbindung(DataTable dt) throws Throwable {
+    	List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+    	for (Map<String, String> listMap: list) {  		
+    		final String von = listMap.get("Von");
+    		final String nach = listMap.get("Nach"); 
+    		final String datum = listMap.get("Datum");
+    		final String uhrzeit = listMap.get("Uhrzeit");
+    		final String ab = listMap.get("Ab");
+    		final String an = listMap.get("An");
+    		Thread.sleep(1000);
+    		driver.findElements(By.name("stationFrom")).get(0).sendKeys(von);
+    		driver.findElements(By.name("stationTo")).get(0).sendKeys(nach);
+	    	//driver.findElement(By.name("btnReset")).click();		
+    		//TODO
+        }		    				
     }		
 
-    @Then("^ErgebnislisteEnthï¿½lt$")					
-    public void ergebnislisteEnthï¿½lt(List<String> parList) throws Throwable 							
-    {    		
-    	//Todo					
-    }	
+    @Then("^ErgebnislisteEnthält$")
+    public void ergebnislisteenthält(DataTable dt) throws Throwable {
+    	List<Map<String, String>> list = dt.asMaps(String.class, String.class);
+    	for (Map<String, String> listMap: list) {  	
+	    	System.out.println(listMap.get("Uhrzeit"));
+	    	System.out.println(listMap.get("Von Bahnhof"));
+	    	System.out.println(listMap.get("Zug"));
+	    	System.out.println(listMap.get("buchbar"));
+	    	//TODO
+    	}
+    }
+
 }
