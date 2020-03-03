@@ -16,13 +16,13 @@ public class TestTicketbuchungSteps {
 	public void startewebapp() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	}
-    @When("^Wähle$")					
-    public void wähle(List<String> parList) throws Throwable 							
+    @When("^Waehle$")
+    public void waehle(List<String> parList) throws Throwable
     {		
     	//Todo						
     }		
 
-    @Then("^TicketKostet €38,50$")					
+    @Then("^TicketKostet 38,50$")
     public void ticketKostet() throws Throwable 							
     {    		
     	//Todo							

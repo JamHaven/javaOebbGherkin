@@ -68,8 +68,8 @@ public class TestSucheSteps extends BaseSteps {
         }		    				
     }		
 
-    @Then("^ErgebnislisteEnthält$")
-    public void ergebnislisteenthält(DataTable dt) throws Throwable {
+    @Then("^ErgebnislisteEnthaelt$")
+    public void ergebnislisteenthaelt(DataTable dt) throws Throwable {
     	List<Map<String, String>> list = dt.asMaps(String.class, String.class);
     	for (Map<String, String> listMap: list) {  	
 	    	System.out.println(listMap.get("Uhrzeit"));
