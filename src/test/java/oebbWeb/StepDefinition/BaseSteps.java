@@ -1,7 +1,5 @@
-package StepDefinition;
+package oebbWeb.StepDefinition;
 
-import gherkin.lexer.Fi;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Locale;
