@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -33,8 +36,33 @@ public class TestSucheSteps extends BaseSteps {
     		final String ab = listMap.get("Ab");
     		final String an = listMap.get("An");
     		Thread.sleep(1000);
+    		driver.findElements(By.className("cursorPointer")).get(0).click();
+    		driver.findElements(By.className("cursorPointer")).get(0).click();
+    		Thread.sleep(1000);
+    		driver.findElements(By.className("cursorPointer")).get(1).click();
+    		driver.findElements(By.className("cursorPointer")).get(1).click();
+    		
+    		Thread.sleep(1000);
     		driver.findElements(By.name("stationFrom")).get(0).sendKeys(von);
+    		driver.findElements(By.name("stationFrom")).get(0).sendKeys(von);
+    		Thread.sleep(1000);
     		driver.findElements(By.name("stationTo")).get(0).sendKeys(nach);
+    		
+    		Thread.sleep(1000);
+    		
+    		WebElement textbox = driver.findElements(By.name("stationTo")).get(0);
+    		textbox.sendKeys(Keys.ENTER);
+    		
+    		new Actions(driver).moveToElement(driver.findElement(By.id("leftColumn"))).perform();
+    		driver.findElement(By.id("leftColumn")).click();
+
+    		Thread.sleep(1000);
+    		driver.findElement(By.className("travelAction")).click();
+    		driver.findElement(By.className("travelAction")).click();
+    		
+
+    		
+    		
 	    	//driver.findElement(By.name("btnReset")).click();		
     		//TODO
         }		    				
