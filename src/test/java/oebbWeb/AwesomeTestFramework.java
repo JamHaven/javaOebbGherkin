@@ -1,5 +1,7 @@
 package oebbWeb;
 
+import org.junit.runner.JUnitCore;
+
 import java.net.MalformedURLException;
 
 public class AwesomeTestFramework {
@@ -7,6 +9,9 @@ public class AwesomeTestFramework {
         AppiumServer appiumServer = new AppiumServer();
         AppiumClient appiumClient = new AppiumClient();
 
+
+        //Selenium Webapp
+        //JUnitCore.main("oebbWeb.Runner");
 
         int port = 4723;
         if(!appiumServer.checkIfServerIsRunnning(port)) {
