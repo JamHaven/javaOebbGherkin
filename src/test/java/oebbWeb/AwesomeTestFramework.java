@@ -9,17 +9,23 @@ public class AwesomeTestFramework {
         AppiumServer appiumServer = new AppiumServer();
         AppiumClient appiumClient = new AppiumClient();
 
-
         //Selenium Webapp
         //JUnitCore.main("oebbWeb.Runner");
 
         int port = 4723;
-        if(!appiumServer.checkIfServerIsRunnning(port)) {
+        appiumClient.initEmulator();
+
+        /*if(!appiumServer.checkIfServerIsRunnning(port)) {
+            System.out.println("starting server!");
             appiumServer.startServer(port);
             appiumClient.initEmulator();
             appiumServer.stopServer();
         } else {
             System.out.println("Appium Server already running on Port - " + port);
-        }
+            System.out.println("Using external Server.");
+            appiumClient.initEmulator();
+
+        }*/
+
     }
 }

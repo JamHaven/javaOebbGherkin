@@ -15,6 +15,7 @@ public class AppiumServer {
     private DesiredCapabilities cap;
 
     public void startServer(int port) {
+        System.out.println("starting server...");
         //Set Capabilities
         cap = new DesiredCapabilities();
         cap.setCapability("noReset", "false");
@@ -37,14 +38,16 @@ public class AppiumServer {
     }
 
     public boolean checkIfServerIsRunnning(int port) {
-
+        System.out.println("check if server is running...");
         boolean isServerRunning = false;
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(port);
+            System.out.println("create and close port!");
             serverSocket.close();
         } catch (IOException e) {
             //If control comes here, then it means that the port is in use
+            System.out.println("Port is in use?!");
             isServerRunning = true;
         } finally {
             serverSocket = null;
