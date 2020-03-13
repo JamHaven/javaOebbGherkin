@@ -7,7 +7,7 @@ Feature: Ticket price calculation in the OEBB Ticket Application on an Android d
       |St. Poelten |Wien| Montag in 3 Wochen | 9:00 |1| keine |
       |Wien |St. Poelten | 20.11.2020        | 17:00|1| keine |
       |St. Poelten |Wien | 20.11.2020        | 17:00|1| keine |
-    Then The ticket costs€14,00
+    Then The ticket costs €14,00
   Scenario: Buy one ticket from Vienna to St. Poelten with a Vorteilscard
     Given The OEBB Ticket was started on an Android device AND navigates to book a ticket
     When Chooses

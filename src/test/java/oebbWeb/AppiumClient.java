@@ -25,6 +25,8 @@ public class AppiumClient {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel 2 API 29");
         capabilities.setCapability(MobileCapabilityType.APP,app.getAbsolutePath());
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,MobilePlatform.ANDROID);
+        capabilities.setCapability("autoGrantPermissions","true");
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");
         //capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         //you are free to set additional capabilities
 

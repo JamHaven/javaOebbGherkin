@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 
 public class AwesomeTestFramework {
     public static void main(String[] args) throws MalformedURLException {
-        AppiumServer appiumServer = new AppiumServer();
         AppiumClient appiumClient = new AppiumClient();
 
         //Selenium Webapp
