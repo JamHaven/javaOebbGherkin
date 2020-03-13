@@ -16,24 +16,27 @@ import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestSucheStepsMobile extends BaseSteps {
+public class TestTicketMobileSteps extends BaseSteps {
 	AppiumDriver<MobileElement> driver;
 
-
-
-	@Given("^The OEBB Ticket was started on an Android device$")
-    public void startBrowser() throws MalformedURLException {
+	@Given("The OEBB Ticket was started on an Android device and navigates to book a ticket")
+	public void the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket() {
+		// Write code here that turns the phrase above into concrete actions
 		System.out.println("Initiating client!");
 		File app = new File("./jar/oebbMobileApp.apk");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel 2 API 29");
 		capabilities.setCapability(MobileCapabilityType.APP,app.getAbsolutePath());
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-		capabilities.setCapability("automationName","true");
+		capabilities.setCapability("autoGrantPermissions","true");
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");
 		//you are free to set additional capabilities
 
-		driver = new AppiumDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		try {
+			driver = new AppiumDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		//System.out.println(driver.getStatus());
     }		
 
