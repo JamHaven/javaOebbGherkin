@@ -47,7 +47,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//System.out.println(driver.getStatus());
     }		
 
-    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*)$")
+    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*) discount$")
     public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String isDepartureMessage, String travelTime, String discountCard) throws InterruptedException {
 		String[] hoursAndMinutes;
 		int hours;
@@ -62,9 +62,9 @@ public class TestTicketMobileSteps extends BaseSteps {
 		timeMinutes00Point.withCoordinates(534,832);*/
 		PointOption timeHoursPoint = new PointOption();
 		PointOption timeMinutesPoint = new PointOption();
-		if(isDepartureMessage.equals("Abfahrt")){
+		if(isDepartureMessage.equals("departure")){
 			isDepartureBoolean = true;
-		}else if (isDepartureMessage.equals("Ankunft")){
+		}else if (isDepartureMessage.equals("arrival")){
 			isDepartureBoolean = false;
 		}else{
 			System.out.println("Ungueltige Eingabe, ob Ankunft oder Abfahrt");
@@ -130,7 +130,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		searchTickets.click();
 		Thread.sleep(10000);
 
-		if(ticketAnzahl >= 1 && !discountCard.equals("keine")){
+		if(ticketAnzahl >= 1 && !discountCard.equals("no")){
 			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
 			changePassengerElement.click();
 			MobileElement addDiscountElement = (MobileElement) driver.findElementByAccessibilityId("ADD DISCOUNT");
@@ -153,7 +153,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 			confirmChangeElement.click();
 			Thread.sleep(10000);
 		}
-		else if(ticketAnzahl > 1 && discountCard.equals("keine")){
+		else if(ticketAnzahl > 1 && discountCard.equals("no")){
 			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
 			changePassengerElement.click();
 			for (int i = 1; i < ticketAnzahl; i++) {
