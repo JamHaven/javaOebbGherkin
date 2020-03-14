@@ -1,34 +1,21 @@
 package oebbWeb.StepDefinition;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
-import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import oebbWeb.StepDefinition.BaseSteps;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertEquals;
 
 public class TestTicketMobileSteps extends BaseSteps {
 	AppiumDriver<MobileElement> driver;
@@ -60,8 +47,8 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//System.out.println(driver.getStatus());
     }		
 
-    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*) at ([^\"]*)$")
-    public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String travelTime) throws InterruptedException {
+    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*) at ([^\"]*) with ([^\"]*)$")
+    public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String travelTime, String discountCard) throws InterruptedException {
 		String[] hoursAndMinutes;
 		int hours;
 		int minutes;
@@ -79,6 +66,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//Enter Depature Station
 		MobileElement depatureStationElement = driver.findElementByAccessibilityId("departure city or station");
 		depatureStationElement.sendKeys(depatureStation);
+		Thread.sleep(2000);
 
 		//Confirm tick to save depature city
 		new TouchAction(driver).tap(depatureStationPoint).perform();
@@ -86,7 +74,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//Enter Arrival Station
 		MobileElement arrivalStationElement = driver.findElementByAccessibilityId("arrival city or station");
 		arrivalStationElement.sendKeys(arrivalStation);
-
+		Thread.sleep(2000);
 		//Confirm Arrival Station and return to previous menu
 		MobileElement confirmArrivalStation = driver.findElementByAccessibilityId(arrivalStation);
 		confirmArrivalStation.click();
@@ -121,16 +109,41 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//Confirm Date and Time Selection
 		MobileElement confirmDateSelection = (MobileElement) driver.findElementById("at.oebb.ts:id/ok_button");
 		confirmDateSelection.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+
 		//Search Tickets
-		MobileElement searchTickets = driver.findElementByAccessibilityId("Single Tickets and Day Tickets");
+		//MobileElement searchTickets = driver.findElementByAccessibilityId("Single Tickets and Day Tickets");
+		MobileElement searchTickets = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.RelativeLayout/android.widget.FrameLayout[5]/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.ImageView");
 		searchTickets.click();
 		Thread.sleep(10000);
 
-		if(ticketAnzahl > 1){
+		if(ticketAnzahl >= 1 && !discountCard.equals("keine")){
+			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
+			changePassengerElement.click();
+			MobileElement addDiscountElement = (MobileElement) driver.findElementByAccessibilityId("ADD DISCOUNT");
+			addDiscountElement.click();
+			MobileElement discountElement = (MobileElement) driver.findElementByAccessibilityId(discountCard);
+			discountElement.click();
+			MobileElement confirmDiscount = (MobileElement) driver.findElementByAccessibilityId("CONFIRM");
+			confirmDiscount.click();
 			for (int i = 1; i < ticketAnzahl; i++) {
-				MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
-				changePassengerElement.click();
+				MobileElement addAdultElement = (MobileElement) driver.findElementByAccessibilityId("Add adult");
+				addAdultElement.click();
+				addDiscountElement = (MobileElement) driver.findElementByAccessibilityId("ADD DISCOUNT");
+				addDiscountElement.click();
+				discountElement = (MobileElement) driver.findElementByAccessibilityId(discountCard);
+				discountElement.click();
+				confirmDiscount = (MobileElement) driver.findElementByAccessibilityId("CONFIRM");
+				confirmDiscount.click();
+			}
+			MobileElement confirmChangeElement = (MobileElement) driver.findElementByAccessibilityId("CONFIRM");
+			confirmChangeElement.click();
+			Thread.sleep(10000);
+		}
+		else if(ticketAnzahl > 1 && discountCard.equals("keine")){
+			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
+			changePassengerElement.click();
+			for (int i = 1; i < ticketAnzahl; i++) {
 				MobileElement addAdultElement = (MobileElement) driver.findElementByAccessibilityId("Add adult");
 				addAdultElement.click();
 			}
