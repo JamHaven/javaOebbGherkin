@@ -47,12 +47,12 @@ public class TestTicketMobileSteps extends BaseSteps {
 		//System.out.println(driver.getStatus());
     }		
 
-    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*) at ([^\"]*) with ([^\"]*)$")
-    public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String travelTime, String discountCard) throws InterruptedException {
+    @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*)$")
+    public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String isDepartureMessage, String travelTime, String discountCard) throws InterruptedException {
 		String[] hoursAndMinutes;
 		int hours;
 		int minutes;
-
+		boolean isDepartureBoolean = true;
 		PointOption depatureStationPoint = new PointOption();
 		depatureStationPoint.withCoordinates(996,378);
 
@@ -62,6 +62,13 @@ public class TestTicketMobileSteps extends BaseSteps {
 		timeMinutes00Point.withCoordinates(534,832);*/
 		PointOption timeHoursPoint = new PointOption();
 		PointOption timeMinutesPoint = new PointOption();
+		if(isDepartureMessage.equals("Abfahrt")){
+			isDepartureBoolean = true;
+		}else if (isDepartureMessage.equals("Ankunft")){
+			isDepartureBoolean = false;
+		}else{
+			System.out.println("Ungueltige Eingabe, ob Ankunft oder Abfahrt");
+		}
 
 		//Enter Depature Station
 		MobileElement depatureStationElement = driver.findElementByAccessibilityId("departure city or station");
@@ -79,9 +86,15 @@ public class TestTicketMobileSteps extends BaseSteps {
 		MobileElement confirmArrivalStation = driver.findElementByAccessibilityId(arrivalStation);
 		confirmArrivalStation.click();
 
-		//Select the depature time
-		MobileElement depatureTime = (MobileElement) driver.findElementByAccessibilityId("Departure");
-		depatureTime.click();
+		if(isDepartureBoolean) {
+			//Select the depature time
+			MobileElement depatureTime = (MobileElement) driver.findElementByAccessibilityId("Departure");
+			depatureTime.click();
+		}else{
+			//Select the arrival time
+			MobileElement depatureTime = (MobileElement) driver.findElementByAccessibilityId("Arrival");
+			depatureTime.click();
+		}
 
 		hoursAndMinutes = travelTime.split(":",2);
 		if(hoursAndMinutes.length == 2) {
