@@ -127,7 +127,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		searchTickets.click();
 		Thread.sleep(10000);
 
-		if(ticketAnzahl >= 1){
+		if(ticketAnzahl > 1){
 			for (int i = 1; i < ticketAnzahl; i++) {
 				MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
 				changePassengerElement.click();
