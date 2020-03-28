@@ -1,6 +1,6 @@
 Feature: Ticket price calculation in the OEBB Ticket Application on an Android device
 
-  Scenario Outline: Buy one ticket from Vienna to Wels
+  Scenario Outline: Buy tickets with the GUI
     Given The OEBB Ticket was started on an Android device and navigates to book a ticket
     When Chooses <tickets> ticket(s) from <from> nach <to> on the <date>, <isDeparture> at <time> with <discount> discount
     Then The ticket costs <price> Euros

@@ -1,11 +1,11 @@
 package oebbWeb;
 
-import org.junit.runner.RunWith;		
-import cucumber.api.CucumberOptions;		
-import cucumber.api.junit.Cucumber;		
+import org.junit.runner.RunWith;
+import io.cucumber.junit.CucumberOptions;
+import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)				
-@CucumberOptions(plugin = {"pretty", "html:./results/cucumber-pretty", "json:./results/cucumber.json"})
+@CucumberOptions(plugin = {"pretty", "html:./results/cucumber-pretty", "json:./results/cucumber.json"}, glue={"oebbWeb.StepDefinition"}, strict = true)
 public class Runner 				
 {		
 
