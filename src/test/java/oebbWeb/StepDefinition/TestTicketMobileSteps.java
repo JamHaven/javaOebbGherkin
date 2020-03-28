@@ -173,7 +173,13 @@ public class TestTicketMobileSteps extends BaseSteps {
 		System.out.println(prize);
 		Assert.assertEquals("€ "+ticketCost,prize);
     }
-    
+
+    @When("^Choose Einfach-raus-Ticket$")
+    public void einfachRaus(){
+		MobileElement einfachRausButton = (MobileElement) driver.findElementByAccessibilityId("Einfach-Raus-Ticket");
+		einfachRausButton.click();
+	}
+
     private PointOption getPointOptionFromHours(int hours){
 		PointOption convertedHoursToPoint = new PointOption();
 		switch(hours){

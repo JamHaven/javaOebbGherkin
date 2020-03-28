@@ -8,7 +8,7 @@ import cucumber.api.java.en.When;
 
 public class TestTicketbuchungSteps {
 	
-	@Given("^StarteWebApp AND NavigiereZuTicketBuchung$")
+	@Given("^StarteWebApp and NavigiereZuTicketBuchung$")
 	public void startewebapp_AND_NavigiereZuTicketBuchung() throws Throwable {
 		System.out.println("StarteWebApp AND NavigiereZuTicketBuchung");
 	}
