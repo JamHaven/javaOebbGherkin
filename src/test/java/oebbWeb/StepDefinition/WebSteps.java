@@ -23,7 +23,8 @@ public class WebSteps extends BaseSteps {
 
     @When("Chooses ([^\"]*) ticket from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*) discount on the website$")
     public void choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(Integer numberOfTickets,String from, String to,String date, String departure, String time, String discount) throws InterruptedException {
-        int timetowait = 1500;
+        //Allgemeiner Timer zwischen Steps die ladezeit brauchen.
+        int timetowait = 2000;
         Thread.sleep(	timetowait);
         driver.findElement(By.className("time-wrapper")).click();
         driver.findElement(By.className("time-wrapper")).click();
@@ -45,30 +46,34 @@ public class WebSteps extends BaseSteps {
         Thread.sleep(	timetowait);
         driver.findElement(By.name("stationTo")).sendKeys(Keys.ENTER);
         Thread.sleep(	timetowait);
+        //Reise anklicken
         driver.findElement(By.cssSelector(".travelActionWrapper:nth-child(1) .text")).click();
-        Thread.sleep(	timetowait);
-
+        Thread.sleep(	timetowait + timetowait);
+        //Abfahrt oder Ankuft
         driver.findElement(By.cssSelector(".mat-select-trigger.mat-select-trigger span span")).click();
         Thread.sleep(	timetowait);
 
         if (departure.equals("departure")){
+            //Abfahrt
             driver.findElements(By.cssSelector(".mat-option-text.mat-option-text")).get(0).click();
         } else {
+            //Ankunft
             driver.findElements(By.cssSelector(".mat-option-text.mat-option-text")).get(1).click();
         }
         Thread.sleep(	timetowait);
 
-
+        //Personen
         driver.findElement(By.className("passengers")).click();
         Thread.sleep(	timetowait);
         int i = numberOfTickets;
         while (i > 1){
+            //Mehrere Personen
             driver.findElements(By.cssSelector(".addPersonButton")).get(0).click();
             //Thread.sleep(	timetowait);
             i--;
         }
 
-
+        //Vorteilscard
         if (discount.equals("Vorteilscard Classic")) {
             i = 0;
             while (i < numberOfTickets) {
@@ -81,6 +86,7 @@ public class WebSteps extends BaseSteps {
                 i++;
             }
         }
+        // Weiter Button
         driver.findElements(By.cssSelector(".mat-button-wrapper.mat-button-wrapper")).get(0).click();
         Thread.sleep(	timetowait);
 
@@ -88,7 +94,8 @@ public class WebSteps extends BaseSteps {
 
     @Then("^The ticket price on website is ([^\"]*) Euros$") //
     public void theTicketPriceOnWebsiteIsPriceEuros(String expectedprice) throws InterruptedException {
-        Thread.sleep(4000);
+        //Wichtiger delay bis der Endgültige Preis geladen ist
+        Thread.sleep(5500);
         String actualPrice = driver.findElements(By.cssSelector(".price .ng-star-inserted")).get(0).getText();
         Assert.assertEquals(expectedprice,actualPrice);
     }
@@ -103,7 +110,7 @@ public class WebSteps extends BaseSteps {
 
     @Then("^The ticket price on website is ([^\"]*) Euros for Einfach-raus$")
     public void theTicketPriceOnWebsiteIsPriceEurosForEinfachRaus(String expectedprice) throws InterruptedException {
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         String actualPrice = driver.findElement(By.xpath("//offer-price/div/div[2]/h2")).getText();
         Assert.assertEquals(expectedprice,actualPrice);
     }
