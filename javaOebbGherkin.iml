@@ -20,6 +20,21 @@
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-core:5.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin:5.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin-vintage:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-plugin:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:docstring:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-java:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-junit:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-java:1.2.5" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-junit:1.2.5" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-core:1.2.5" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-html:0.2.3" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:cucumber-jvm-deps:1.0.5" level="project" />
+    <orderEntry type="library" name="Maven: info.cukes:gherkin:2.12.2" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:gherkin:10.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:messages:10.0.1" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-core:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin:5.4.0" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-gherkin-vintage:5.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:tag-expressions:2.0.4" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-expressions:8.3.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:datatable:3.3.0" level="project" />

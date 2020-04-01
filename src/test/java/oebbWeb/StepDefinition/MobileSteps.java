@@ -25,12 +25,11 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class TestTicketMobileSteps extends BaseSteps {
+public class MobileSteps extends BaseSteps {
 	AppiumDriver<MobileElement> driver;
 
 	@Given("The OEBB Ticket was started on an Android device and navigates to book a ticket")
 	public void the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket() {
-		// Write code here that turns the phrase above into concrete actions
 		System.out.println("Initiating client!");
 		File app = new File("./jar/oebbMobileApp.apk");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -43,8 +42,6 @@ public class TestTicketMobileSteps extends BaseSteps {
 
 		try {
 			driver = new AppiumDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-			//driver.findElementByXPath("(//android.widget.TextView[@content-desc=\"OK\"])[1]").click();
-			///driver.findElementByName("OK").click();
 			driver.findElementById("at.oebb.ts:id/header_addticket").click();
 			driver.findElementById("at.oebb.ts:id/header_addticket").click();
 			driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -52,8 +49,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 			e.printStackTrace();
 		}
 
-		//System.out.println(driver.getStatus());
-    }		
+    }
 
     @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*) discount$")
     public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String isDepartureMessage, String travelTime, String discountCard) throws InterruptedException {
@@ -64,10 +60,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 		PointOption depatureStationPoint = new PointOption();
 		depatureStationPoint.withCoordinates(996,378);
 
-		/*PointOption timeHours09Point = new PointOption();
-		timeHours09Point.withCoordinates(279,1164);
-		PointOption timeMinutes00Point = new PointOption();
-		timeMinutes00Point.withCoordinates(534,832);*/
+
 		PointOption timeHoursPoint = new PointOption();
 		PointOption timeMinutesPoint = new PointOption();
 		if(isDepartureMessage.equals("departure")){
@@ -346,14 +339,7 @@ public class TestTicketMobileSteps extends BaseSteps {
 				driver.findElementByAccessibilityId(elementToFind);
 				found = true;
 			} catch (Exception e) {
-				/*PointOption startPoint = new PointOption().withCoordinates(currentX,currentY);
-				action.press(startPoint);
-				currentY = currentY +800;
-				PointOption endPoint = new PointOption().withCoordinates(currentX,currentY);
-				action.moveTo(endPoint);
-				action.waitAction(new WaitOptions().withDuration(Duration.ofSeconds(2)));
-				action.release();
-				action.perform();*/
+
 
 				new TouchAction(driver)
 						.press(new PointOption().withCoordinates(startX,startY))
