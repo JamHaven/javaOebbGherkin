@@ -1,0 +1,1286 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2020-04-01T18:20:53.139Z",
+        "line": 9,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 8479073100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 49107769200,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket(s) from Salzburg nach Ollersbach on the 26 August 2020, departure at 17:30 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 25
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 39
+                },
+                {
+                  "val": "26 August 2020",
+                  "offset": 57
+                },
+                {
+                  "val": "departure",
+                  "offset": 73
+                },
+                {
+                  "val": "17:30",
+                  "offset": 86
+                },
+                {
+                  "val": "no",
+                  "offset": 97
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 43885800,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 19,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "19,00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:21:50.816Z",
+        "line": 10,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9044404200,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 61087609400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 3 ticket(s) from Salzburg nach Ollersbach on the 26 August 2020, departure at 17:30 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 25
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 39
+                },
+                {
+                  "val": "26 August 2020",
+                  "offset": 57
+                },
+                {
+                  "val": "departure",
+                  "offset": 73
+                },
+                {
+                  "val": "17:30",
+                  "offset": 86
+                },
+                {
+                  "val": "no",
+                  "offset": 97
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 95740000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 57,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "57,00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:23:01.046Z",
+        "line": 11,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9122288800,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 63362017400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket(s) from Salzburg nach Ollersbach on the 20 May 2020, departure at 17:30 with Vorteilscard Classic discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 25
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 39
+                },
+                {
+                  "val": "20 May 2020",
+                  "offset": 57
+                },
+                {
+                  "val": "departure",
+                  "offset": 70
+                },
+                {
+                  "val": "17:30",
+                  "offset": 83
+                },
+                {
+                  "val": "Vorteilscard Classic",
+                  "offset": 94
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 141217900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 26,10 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "26,10",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:24:13.673Z",
+        "line": 12,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9203914600,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 68734390700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 2 ticket(s) from Salzburg nach Ollersbach on the 20 May 2020, departure at 17:30 with Vorteilscard Classic discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 25
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 39
+                },
+                {
+                  "val": "20 May 2020",
+                  "offset": 57
+                },
+                {
+                  "val": "departure",
+                  "offset": 70
+                },
+                {
+                  "val": "17:30",
+                  "offset": 83
+                },
+                {
+                  "val": "Vorteilscard Classic",
+                  "offset": 94
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 28898600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 52,20 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "52,20",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:25:31.643Z",
+        "line": 13,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;6",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9639769600,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 49789866300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket(s) from Wien nach Wels on the 02 September 2020, arrival at 9:00 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 25
+                },
+                {
+                  "val": "Wels",
+                  "offset": 35
+                },
+                {
+                  "val": "02 September 2020",
+                  "offset": 47
+                },
+                {
+                  "val": "arrival",
+                  "offset": 66
+                },
+                {
+                  "val": "9:00",
+                  "offset": 77
+                },
+                {
+                  "val": "no",
+                  "offset": 87
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 282819400,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 14,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "14,00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:26:31.358Z",
+        "line": 14,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;7",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 8675567900,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 47683499300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket(s) from Wien nach Wels on the 02 September 2020, departure at 9:00 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 25
+                },
+                {
+                  "val": "Wels",
+                  "offset": 35
+                },
+                {
+                  "val": "02 September 2020",
+                  "offset": 47
+                },
+                {
+                  "val": "departure",
+                  "offset": 66
+                },
+                {
+                  "val": "9:00",
+                  "offset": 79
+                },
+                {
+                  "val": "no",
+                  "offset": 89
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 56850200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 14,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "14,00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:27:27.776Z",
+        "line": 15,
+        "name": "Buy tickets with the GUI",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-tickets-with-the-gui;;8",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 9061390700,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 67690309700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 2 ticket(s) from Wien nach Wels on the 02 September 2020, departure at 9:00 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 25
+                },
+                {
+                  "val": "Wels",
+                  "offset": 35
+                },
+                {
+                  "val": "02 September 2020",
+                  "offset": 47
+                },
+                {
+                  "val": "departure",
+                  "offset": 66
+                },
+                {
+                  "val": "9:00",
+                  "offset": 79
+                },
+                {
+                  "val": "no",
+                  "offset": 89
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 24934200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket costs 28,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "28,00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:28:44.553Z",
+        "line": 23,
+        "name": "Buy Einfach-raus-Ticket",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;buy-einfach-raus-ticket;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 123550223600,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2875714900,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Choose Einfach-raus-Ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.einfachRaus()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2675258900,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "The ticket costs 35.00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "35.00",
+                  "offset": 17
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.ergebnislisteenthaelt(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:30:53.658Z",
+        "line": 31,
+        "name": "Selected journey is in the past",
+        "description": "",
+        "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device;selected-journey-is-in-the-past;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 8775119300,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "The OEBB Ticket was started on an Android device and navigates to book a ticket",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 43523992700,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "Chooses 1 ticket(s) from Salzburg nach Ollersbach on the 31 March 2020, departure at 17:30 with no discount",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 25
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 39
+                },
+                {
+                  "val": "31 March 2020",
+                  "offset": 57
+                },
+                {
+                  "val": "departure",
+                  "offset": 72
+                },
+                {
+                  "val": "17:30",
+                  "offset": 85
+                },
+                {
+                  "val": "no",
+                  "offset": 96
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.MobileSteps.choosesOneTicket(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 67400200,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "The journey is in the past",
+            "match": {
+              "location": "oebbWeb.StepDefinition.MobileSteps.jounreyInThePast()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Ticket price calculation in the OEBB Ticket Application on an Android device",
+    "description": "",
+    "id": "ticket-price-calculation-in-the-oebb-ticket-application-on-an-android-device",
+    "keyword": "Feature",
+    "uri": "classpath:oebbWeb/Mobile.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2020-04-01T18:31:46.027Z",
+        "line": 9,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4128114000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 24971890800,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 2 ticket from Salzburg nach Ollersbach on the 29 Juni 2020, departure at 17:30 with Vorteilscard Classic discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 22
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 36
+                },
+                {
+                  "val": "29 Juni 2020",
+                  "offset": 54
+                },
+                {
+                  "val": "departure",
+                  "offset": 68
+                },
+                {
+                  "val": "17:30",
+                  "offset": 81
+                },
+                {
+                  "val": "Vorteilscard Classic",
+                  "offset": 92
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5514740900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 38,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 38,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:32:20.648Z",
+        "line": 10,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3700045300,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 23755970300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket from Salzburg nach Ollersbach on the 29 Juni 2020, departure at 17:30 with Vorteilscard Classic discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 22
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 36
+                },
+                {
+                  "val": "29 Juni 2020",
+                  "offset": 54
+                },
+                {
+                  "val": "departure",
+                  "offset": 68
+                },
+                {
+                  "val": "17:30",
+                  "offset": 81
+                },
+                {
+                  "val": "Vorteilscard Classic",
+                  "offset": 92
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5513601600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 19,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 19,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:32:53.619Z",
+        "line": 11,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3615642400,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 22965430700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket from Salzburg nach Ollersbach on the 29 Juni 2020, departure at 17:30 with no discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Salzburg",
+                  "offset": 22
+                },
+                {
+                  "val": "Ollersbach",
+                  "offset": 36
+                },
+                {
+                  "val": "29 Juni 2020",
+                  "offset": 54
+                },
+                {
+                  "val": "departure",
+                  "offset": 68
+                },
+                {
+                  "val": "17:30",
+                  "offset": 81
+                },
+                {
+                  "val": "no",
+                  "offset": 92
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5512156200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 19,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 19,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:33:25.715Z",
+        "line": 12,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3645511700,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 22770440700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket from Wien nach Wels on the 12 Juni 2020, arrival at 9:00 with no discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 22
+                },
+                {
+                  "val": "Wels",
+                  "offset": 32
+                },
+                {
+                  "val": "12 Juni 2020",
+                  "offset": 44
+                },
+                {
+                  "val": "arrival",
+                  "offset": 58
+                },
+                {
+                  "val": "9:00",
+                  "offset": 69
+                },
+                {
+                  "val": "no",
+                  "offset": 79
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5513798600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 14,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 14,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:33:57.650Z",
+        "line": 13,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;6",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3632584100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 22767609000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 1 ticket from Wien nach Wels on the 12 Juni 2020, departure at 9:00 with no discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 22
+                },
+                {
+                  "val": "Wels",
+                  "offset": 32
+                },
+                {
+                  "val": "12 Juni 2020",
+                  "offset": 44
+                },
+                {
+                  "val": "departure",
+                  "offset": 58
+                },
+                {
+                  "val": "9:00",
+                  "offset": 71
+                },
+                {
+                  "val": "no",
+                  "offset": 81
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5525391900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 14,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 14,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:34:29.575Z",
+        "line": 14,
+        "name": "Buy one ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-one-ticket;;7",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3569370100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 23049330700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Chooses 2 ticket from Wien nach Wels on the 12 Juni 2020, departure at 9:00 with no discount on the website",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 8
+                },
+                {
+                  "val": "Wien",
+                  "offset": 22
+                },
+                {
+                  "val": "Wels",
+                  "offset": 32
+                },
+                {
+                  "val": "12 Juni 2020",
+                  "offset": 44
+                },
+                {
+                  "val": "departure",
+                  "offset": 58
+                },
+                {
+                  "val": "9:00",
+                  "offset": 71
+                },
+                {
+                  "val": "no",
+                  "offset": 81
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.choosesTicketsTicketSFromFromNachToOnTheDateIsDepartureAtTimeWithDiscountDiscountOnTheWebsite(java.lang.Integer,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5512600500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The ticket price on website is € 28,00 Euros",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 28,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEuros(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-04-01T18:35:01.709Z",
+        "line": 22,
+        "name": "Buy Einfach-raus-Ticket",
+        "description": "",
+        "id": "basic-functionality-of-the-oebb-web-application;buy-einfach-raus-ticket;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3647958100,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "Open Browser and go to ÖBB",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.openBrowserAndGoToÖBB()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1290031100,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "Choose Einfach-raus-Ticket for website",
+            "match": {
+              "location": "oebbWeb.StepDefinition.WebSteps.chooseEinfachRausTicketForWebsite()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5015226800,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "The ticket price on website is € 35,00 Euros for Einfach-raus",
+            "match": {
+              "arguments": [
+                {
+                  "val": "€ 35,00",
+                  "offset": 31
+                }
+              ],
+              "location": "oebbWeb.StepDefinition.WebSteps.theTicketPriceOnWebsiteIsPriceEurosForEinfachRaus(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Basic functionality of the OEBB web application",
+    "description": "",
+    "id": "basic-functionality-of-the-oebb-web-application",
+    "keyword": "Feature",
+    "uri": "classpath:oebbWeb/Web.feature",
+    "tags": []
+  }
+]
