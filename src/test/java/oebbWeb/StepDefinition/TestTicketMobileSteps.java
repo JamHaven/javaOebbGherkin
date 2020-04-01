@@ -186,12 +186,21 @@ public class TestTicketMobileSteps extends BaseSteps {
     public void ergebnislisteenthaelt(String ticketCost){
 		try {
 			String prize = driver.findElementByAccessibilityId("€ " + ticketCost).getText();
-			System.out.println(prize);
 			Assert.assertEquals("€ " + ticketCost, prize);
 		}catch(NoSuchElementException nse){
 			Assert.fail();
 		}
     }
+
+    @Then("^The journey is in the past")
+	public void jounreyInThePast(){
+		try {
+			String elementText = driver.findElementByXPath("(//android.widget.TextView[@content-desc=\"This journey is in the past\"])[1]").getText();
+			Assert.assertEquals("This journey is in the past", elementText);
+		}catch(NoSuchElementException nse){
+			Assert.fail();
+		}
+	}
 
     @When("^Choose Einfach-raus-Ticket$")
     public void einfachRaus(){
