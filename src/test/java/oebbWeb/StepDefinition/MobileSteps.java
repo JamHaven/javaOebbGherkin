@@ -1,7 +1,6 @@
 package oebbWeb.StepDefinition;
 
 import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,21 +12,27 @@ import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Automated test of the Android application of the OEBB-Ticket Application.
+ * This requires the following applications up and running:
+ *  - Appium Server - Standard config
+ *  - Android Studiom AVD - Virtual Android device: Pixel 2 API 29 1080x1920: 420dpi Android 10 x86
+ */
 public class MobileSteps extends BaseSteps {
 	AppiumDriver<MobileElement> driver;
 
+	/**
+	 * Configures the virtual android device to use the OEBB-Ticket app to be used with Appium.
+	 */
 	@Given("The OEBB Ticket was started on an Android device and navigates to book a ticket")
 	public void the_OEBB_Ticket_was_started_on_an_Android_device_and_navigates_to_book_a_ticket() {
 		System.out.println("Initiating client!");
@@ -51,18 +56,23 @@ public class MobileSteps extends BaseSteps {
 
     }
 
+	/**
+	 * Does the Booking of a ticket with the specified parameters. This ranges from choosing a time, arrival and
+	 * depature station, as well as the ticket amount and discounts for the travel.
+	 * @param ticketAnzahl How many tickets should be bought
+	 * @param departureStation From which station does the train depart
+	 * @param arrivalStation To which station does the train travel
+	 * @param travelDate On which date does the Train travel
+	 * @param isDepartureMessage True: Time is for depature, False: Time is for arrival
+	 * @param travelTime HH:MM Format when the train arrives or departs
+	 * @param discountCard Either "no" if no discount is present, or the Discount Card name
+	 * @throws InterruptedException If the Sleep is interrupted... not catched
+	 */
     @When("^Chooses ([^\"]*) ticket\\(s\\) from ([^\"]*) nach ([^\"]*) on the ([^\"]*), ([^\"]*) at ([^\"]*) with ([^\"]*) discount$")
-    public void choosesOneTicket(int ticketAnzahl, String depatureStation, String arrivalStation, String travelDate, String isDepartureMessage, String travelTime, String discountCard) throws InterruptedException {
-		String[] hoursAndMinutes;
-		int hours;
-		int minutes;
+    public void choosesOneTicket(int ticketAnzahl, String departureStation, String arrivalStation, String travelDate, String isDepartureMessage, String travelTime, String discountCard) throws InterruptedException {
 		boolean isDepartureBoolean = true;
-		PointOption depatureStationPoint = new PointOption();
-		depatureStationPoint.withCoordinates(996,378);
 
-
-		PointOption timeHoursPoint = new PointOption();
-		PointOption timeMinutesPoint = new PointOption();
+		//Maps the Entries to the Boolean, Default is "Departure"
 		if(isDepartureMessage.equals("departure")){
 			isDepartureBoolean = true;
 		}else if (isDepartureMessage.equals("arrival")){
@@ -71,22 +81,10 @@ public class MobileSteps extends BaseSteps {
 			System.out.println("Ungueltige Eingabe, ob Ankunft oder Abfahrt");
 		}
 
-		//Enter Depature Station
-		MobileElement depatureStationElement = driver.findElementByAccessibilityId("departure city or station");
-		depatureStationElement.sendKeys(depatureStation);
-		Thread.sleep(2000);
+		//Selects arrival and departure Station and returns to booking site
+		this.selectStations(arrivalStation,departureStation);
 
-		//Confirm tick to save depature city
-		new TouchAction(driver).tap(depatureStationPoint).perform();
-
-		//Enter Arrival Station
-		MobileElement arrivalStationElement = driver.findElementByAccessibilityId("arrival city or station");
-		arrivalStationElement.sendKeys(arrivalStation);
-		Thread.sleep(2000);
-		//Confirm Arrival Station and return to previous menu
-		MobileElement confirmArrivalStation = driver.findElementByAccessibilityId(arrivalStation);
-		confirmArrivalStation.click();
-
+		//Switch to the corresponding time selection View (arrival or departure time)
 		MobileElement depatureTime;
 		if(isDepartureBoolean) {
 			//Select the depature time
@@ -98,46 +96,29 @@ public class MobileSteps extends BaseSteps {
 		}
 		depatureTime.click();
 
-		hoursAndMinutes = travelTime.split(":",2);
-		if(hoursAndMinutes.length == 2) {
-			hours = Integer.parseInt(hoursAndMinutes[0]);
-			timeHoursPoint = this.getPointOptionFromHours(hours);
-			minutes = Integer.parseInt(hoursAndMinutes[1]);
-			timeMinutesPoint = this.getPointOptionFromMinutes(minutes);
-		}else{
-			System.out.println("Ungueltige Zeit eingegeben!");
-		}
-		//Select 09 on the hour wheel
-		new TouchAction(driver).tap(timeHoursPoint).perform();
-		Thread.sleep(1000);
-		//Select 00 on the minutes wheel
-		new TouchAction(driver).tap(timeMinutesPoint).perform();
-		Thread.sleep(1000);
-		//Select Date
-		MobileElement selectDate = (MobileElement) driver.findElementById("at.oebb.ts:id/dateButton");
-		selectDate.click();
-		Thread.sleep(1000);
+		//Select the time (hours and minutes) and stays in the time selection view
+		this.selectTime(travelTime);
 
+		//Selects the data of travel and returns to the booking view
+		this.selectDate(travelDate);
 
-		//Select the required Date
-		scrollUntilElement(travelDate);
-		MobileElement chooseDate = (MobileElement) driver.findElementByAccessibilityId(travelDate);
-		chooseDate.click();
+		//Add Passengers and corresponding discount card and return to booking view
+		this.selectPassengerInformation(ticketAnzahl, discountCard);
 
+    }
 
-
-
-		//Confirm Date and Time Selection
-		MobileElement confirmDateSelection = (MobileElement) driver.findElementById("at.oebb.ts:id/ok_button");
-		confirmDateSelection.click();
-		Thread.sleep(4000);
-
-		//Search Tickets
-		//MobileElement searchTickets = driver.findElementByAccessibilityId("Single Tickets and Day Tickets");
+	/**
+	 * Adds passengers to the trip, as well as discounts to every traveler
+	 * @param ticketAnzahl Number of passengers
+	 * @param discountCard Type of discount card
+	 * @throws InterruptedException If the sleep gets interrupted
+	 */
+	public void selectPassengerInformation(int ticketAnzahl, String discountCard) throws InterruptedException {
 		MobileElement searchTickets = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.RelativeLayout/android.widget.FrameLayout[5]/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.ImageView");
 		searchTickets.click();
 		Thread.sleep(10000);
 
+		//If a single or multiple persons with discount should be added
 		if(ticketAnzahl >= 1 && !discountCard.equals("no")){
 			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
 			changePassengerElement.click();
@@ -161,7 +142,7 @@ public class MobileSteps extends BaseSteps {
 			confirmChangeElement.click();
 			Thread.sleep(10000);
 		}
-		else if(ticketAnzahl > 1 && discountCard.equals("no")){
+		else if(ticketAnzahl > 1 && discountCard.equals("no")){ //If multiple persons without discount should be added
 			MobileElement changePassengerElement = (MobileElement) driver.findElementByAccessibilityId("CHANGE");
 			changePassengerElement.click();
 			for (int i = 1; i < ticketAnzahl; i++) {
@@ -172,9 +153,91 @@ public class MobileSteps extends BaseSteps {
 			confirmChangeElement.click();
 			Thread.sleep(10000);
 		}
+		//Other cases are irrelevant, since neither a discount or multiple persons are present
+	}
 
-    }		
 
+	/**
+	 * Selects the date of travel in the UI. Returns to the booking view
+	 * @param travelDate Time of Travel: DD Month YYYY
+	 * @throws InterruptedException If the sleep gets interrupted
+	 */
+	public void selectDate(String travelDate) throws InterruptedException {
+		//Select Date
+		MobileElement selectDate = (MobileElement) driver.findElementById("at.oebb.ts:id/dateButton");
+		selectDate.click();
+		Thread.sleep(1000);
+
+		//Select the required Date
+		scrollUntilElementInAccessbilityId(travelDate);
+		MobileElement chooseDate = (MobileElement) driver.findElementByAccessibilityId(travelDate);
+		chooseDate.click();
+
+		//Confirm Date and Time Selection
+		MobileElement confirmDateSelection = (MobileElement) driver.findElementById("at.oebb.ts:id/ok_button");
+		confirmDateSelection.click();
+		Thread.sleep(4000);
+	}
+
+	/**
+	 * Selects the time values from travelTime in the UI. Stays in the time selection view.
+	 * @param travelTime Time in format HH:MM
+	 * @throws InterruptedException If the sleep gets interrupted
+	 */
+	public void selectTime(String travelTime) throws InterruptedException {
+		PointOption timeHoursPoint = new PointOption();
+		PointOption timeMinutesPoint = new PointOption();
+		String[] hoursAndMinutes;
+		int hours;
+		int minutes;
+		hoursAndMinutes = travelTime.split(":",2);
+		if(hoursAndMinutes.length == 2) {
+			hours = Integer.parseInt(hoursAndMinutes[0]);
+			timeHoursPoint = this.getPointOptionFromHours(hours);
+			minutes = Integer.parseInt(hoursAndMinutes[1]);
+			timeMinutesPoint = this.getPointOptionFromMinutes(minutes);
+		}else{
+			System.out.println("Ungueltige Zeit eingegeben!");
+		}
+		//Select 09 on the hour wheel
+		new TouchAction(driver).tap(timeHoursPoint).perform();
+		Thread.sleep(1000);
+		//Select 00 on the minutes wheel
+		new TouchAction(driver).tap(timeMinutesPoint).perform();
+		Thread.sleep(1000);
+	}
+
+	/**
+	 * Selects the arrival and departure Station and confirms the selection --> return to the booking screen
+	 * @param departureStation From which station does the train depart
+	 * @param arrivalStation To which station does the train travel
+	 * @throws InterruptedException
+	 */
+	public void selectStations(String arrivalStation, String departureStation) throws InterruptedException {
+		//Enter Depature Station
+		MobileElement depatureStationElement = driver.findElementByAccessibilityId("departure city or station");
+		depatureStationElement.sendKeys(departureStation);
+		Thread.sleep(2000);
+
+		//Confirm tick to save departure city
+		PointOption departureStationPoint = new PointOption();
+		departureStationPoint.withCoordinates(996,378);
+		new TouchAction(driver).tap(departureStationPoint).perform();
+
+    	//Enter Arrival Station
+		MobileElement arrivalStationElement = driver.findElementByAccessibilityId("arrival city or station");
+		arrivalStationElement.sendKeys(arrivalStation);
+		Thread.sleep(2000);
+		//Confirm Arrival Station and return to previous menu
+		MobileElement confirmArrivalStation = driver.findElementByAccessibilityId(arrivalStation);
+		confirmArrivalStation.click();
+	}
+
+	/**
+	 * Evaluates the FIRST ticket available. This is rather dependent on the entered date and the time the search is started.
+	 * Unfortunately, the testers can not influence the search time, to make the tests more consistent.
+	 * @param ticketCost Price of the FIRST available ticket in the result view
+	 */
     @Then("^The ticket costs ([^\"]*) Euros")
     public void ergebnislisteenthaelt(String ticketCost){
 		try {
@@ -185,7 +248,10 @@ public class MobileSteps extends BaseSteps {
 		}
     }
 
-    @Then("^The journey is in the past")
+	/**
+	 * Evaluates the first ticket, if the journey is in the past.
+	 */
+	@Then("^The journey is in the past")
 	public void jounreyInThePast(){
 		try {
 			String elementText = driver.findElementByXPath("(//android.widget.TextView[@content-desc=\"This journey is in the past\"])[1]").getText();
@@ -195,12 +261,20 @@ public class MobileSteps extends BaseSteps {
 		}
 	}
 
+	/**
+	 * Chooses the "Einfach-raus-Ticket option
+	 */
     @When("^Choose Einfach-raus-Ticket$")
     public void einfachRaus(){
 		MobileElement einfachRausButton = (MobileElement) driver.findElementByAccessibilityId("Einfach-Raus-Ticket");
 		einfachRausButton.click();
 	}
 
+	/**
+	 * Gets the coordinates of the requested hours, from the selection wheel. There was/is no other way to select the time there.
+	 * @param hours Hours to be selected from the time wheel
+	 * @return Point with coordinates of the requested hours
+	 */
     private PointOption getPointOptionFromHours(int hours){
 		PointOption convertedHoursToPoint = new PointOption();
 		switch(hours){
@@ -281,6 +355,11 @@ public class MobileSteps extends BaseSteps {
 		return convertedHoursToPoint;
 	}
 
+	/**
+	 * Gets the coordinates of the requested minutes, from the selection wheel. There was/is no other way to select the time there.
+	 * @param minutes Minutes to be selected from the time wheel
+	 * @return Point with coordinates of the requested minutes
+	 */
 	private PointOption getPointOptionFromMinutes(int minutes){
 		PointOption convertedMinutesToPoint = new PointOption();
 		switch(minutes){
@@ -325,7 +404,11 @@ public class MobileSteps extends BaseSteps {
 		return convertedMinutesToPoint;
 	}
 
-	public void scrollUntilElement(String elementToFind) {
+	/**
+	 * Scrolls until a specific Item can be found via accessibilityId. Scrolls via relative swipe.
+	 * @param elementToFind Item to look for before every swipe.
+	 */
+	public void scrollUntilElementInAccessbilityId(String elementToFind) {
 		boolean found = false;
 		int swipeCount = 0;
 		Dimension size = driver.manage().window().getSize();
