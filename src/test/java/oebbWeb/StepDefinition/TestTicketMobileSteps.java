@@ -1,5 +1,7 @@
 package oebbWeb.StepDefinition;
 
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,11 +12,17 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.touch.offset.PointOption;
 import org.junit.Assert;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class TestTicketMobileSteps extends BaseSteps {
@@ -86,15 +94,16 @@ public class TestTicketMobileSteps extends BaseSteps {
 		MobileElement confirmArrivalStation = driver.findElementByAccessibilityId(arrivalStation);
 		confirmArrivalStation.click();
 
+		MobileElement depatureTime;
 		if(isDepartureBoolean) {
 			//Select the depature time
-			MobileElement depatureTime = (MobileElement) driver.findElementByAccessibilityId("Departure");
-			depatureTime.click();
+			 depatureTime = (MobileElement) driver.findElementByAccessibilityId("Departure");
 		}else{
 			//Select the arrival time
-			MobileElement depatureTime = (MobileElement) driver.findElementByAccessibilityId("Arrival");
-			depatureTime.click();
+			 depatureTime = (MobileElement) driver.findElementByAccessibilityId("Arrival");
+
 		}
+		depatureTime.click();
 
 		hoursAndMinutes = travelTime.split(":",2);
 		if(hoursAndMinutes.length == 2) {
@@ -115,9 +124,15 @@ public class TestTicketMobileSteps extends BaseSteps {
 		MobileElement selectDate = (MobileElement) driver.findElementById("at.oebb.ts:id/dateButton");
 		selectDate.click();
 		Thread.sleep(1000);
+
+
 		//Select the required Date
+		scrollUntilElement(travelDate);
 		MobileElement chooseDate = (MobileElement) driver.findElementByAccessibilityId(travelDate);
 		chooseDate.click();
+
+
+
 
 		//Confirm Date and Time Selection
 		MobileElement confirmDateSelection = (MobileElement) driver.findElementById("at.oebb.ts:id/ok_button");
@@ -169,9 +184,13 @@ public class TestTicketMobileSteps extends BaseSteps {
 
     @Then("^The ticket costs ([^\"]*) Euros")
     public void ergebnislisteenthaelt(String ticketCost){
-		String prize = driver.findElementByAccessibilityId("€ "+ticketCost).getText();
-		System.out.println(prize);
-		Assert.assertEquals("€ "+ticketCost,prize);
+		try {
+			String prize = driver.findElementByAccessibilityId("€ " + ticketCost).getText();
+			System.out.println(prize);
+			Assert.assertEquals("€ " + ticketCost, prize);
+		}catch(NoSuchElementException nse){
+			Assert.fail();
+		}
     }
 
     @When("^Choose Einfach-raus-Ticket$")
@@ -304,4 +323,40 @@ public class TestTicketMobileSteps extends BaseSteps {
 		return convertedMinutesToPoint;
 	}
 
+	public void scrollUntilElement(String elementToFind) {
+		boolean found = false;
+		int swipeCount = 0;
+		Dimension size = driver.manage().window().getSize();
+		int startY = (int) (size.height * 0.70);
+		int endY = (int) (size.height * 0.30);
+		int startX = (size.width / 2);
+
+		while (!found || swipeCount == 15) {
+			TouchAction action = new TouchAction(driver);
+			try {
+				driver.findElementByAccessibilityId(elementToFind);
+				found = true;
+			} catch (Exception e) {
+				/*PointOption startPoint = new PointOption().withCoordinates(currentX,currentY);
+				action.press(startPoint);
+				currentY = currentY +800;
+				PointOption endPoint = new PointOption().withCoordinates(currentX,currentY);
+				action.moveTo(endPoint);
+				action.waitAction(new WaitOptions().withDuration(Duration.ofSeconds(2)));
+				action.release();
+				action.perform();*/
+
+				new TouchAction(driver)
+						.press(new PointOption().withCoordinates(startX,startY))
+						.waitAction(new WaitOptions().withDuration(Duration.ofSeconds(2)))
+						.moveTo(new PointOption().withCoordinates(startX, endY))
+						.release()
+						.perform();
+
+				swipeCount++;
+			}
+
+
+		}
+	}
 }
