@@ -1,6 +1,6 @@
 Feature: Basic functionality of the OEBB web application
 
-  Scenario Outline: Buy one ticket
+  Scenario Outline: Select one or more tickets according to specified criteria
     Given Open Browser and go to ÖBB
     When Chooses <tickets> ticket from <from> nach <to> on the <date>, <isDeparture> at <time> with <discount> discount on the website
     Then The ticket price on website is <price> Euros
@@ -13,7 +13,7 @@ Feature: Basic functionality of the OEBB web application
       | Wien     | Wels       | 12 Juni 2020 | 9:00     | 1      | € 14,00 | no                | departure |
       | Wien     | Wels       | 12 Juni 2020 | 9:00     | 2      | € 28,00 | no                | departure |
 
-  Scenario Outline: Buy Einfach-raus-Ticket
+  Scenario Outline: Select one Einfach-raus-Ticket
     Given Open Browser and go to ÖBB
     When Choose Einfach-raus-Ticket for website
     Then The ticket price on website is <price> Euros for Einfach-raus
